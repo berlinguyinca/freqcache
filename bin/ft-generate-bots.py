@@ -31,7 +31,7 @@ parser.add_argument('--image', required=False, dest='image',
                     help='the freqtrade image file to use', default="freqtrade")
 
 parser.add_argument('--certificate', required=False, dest='cert',
-                    help='the certificate file to use', default="ca.crt")
+                    help='the certificate file to use', default="cacert.pem")
 
 parser.add_argument('--network', required=False, dest='network',
                     help='the name of the network to use', default="freqcache_ft_network")
@@ -74,12 +74,7 @@ for root, dirs, files in os.walk(config_dir):
                     "{}:/freqtrade/config.json".format(config_file),
                     "{}:/freqtrade/user_data/strategies".format(strategy_file),
                     "{}:/freqtrade/user_data/data".format(data_file),
-                    "{}:/freqtrade/ca.crt".format(cert_file)
-                ],
-                "environment": [
-                    "SSL_CERT_FILE=/freqtrade/ca.crt",
-                    "CURL_CA_BUNDLE=/freqtrade/ca.crt",
-                    "REQUESTS_CA_BUNDLE=/freqtrade/ca.crt"
+                    "{}:/usr/local/lib/python3.6/site-packages/certifi/cacert.pem".format(cert_file)
                 ]
 
             }
