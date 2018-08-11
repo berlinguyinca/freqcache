@@ -57,7 +57,7 @@ with open(args.input) as input:
 
                 if 'db_url' in configuration:
                     configuration['db_url'] = configuration['db_url'].replace(".sqlite",
-                                                                              ".{}.sqlite".format(name))
+                                                                              ".{}.{}.sqlite".format(name,configuration['stake_currency']))
 
                 # always disable telegram, since it won't work with mutliple parallel bots
                 if 'telegram' in configuration:
